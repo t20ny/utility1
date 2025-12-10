@@ -38,7 +38,7 @@ pwsh .\CompressClean.ps1 -SourceDir "C:\Data" -TempDest "C:\TempExtract" -Report
 #>
 
 param(
-    [Parameter(Mandatory = $false)]
+    [Parameter(Mandatory = $True)]
     [ValidateScript({Test-Path $_ -PathType Container})]
     [string]$SourceDir="D:\bak",
 
