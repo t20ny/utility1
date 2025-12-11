@@ -46,8 +46,14 @@ param(
     [string]$TempDest="D:\tmp",
 
     [Parameter(Mandatory = $false)]
-    [string]$ReportPath="D:\bak\Clean.Log"
+    [string]$ReportPath
 )
+
+
+if(-not($ReportPath)){
+    $ReportPath="$SourceDir\archived.log"
+}
+
 
 function dump {             # Write-Log
     param(
