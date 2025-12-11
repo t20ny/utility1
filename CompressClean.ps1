@@ -65,6 +65,66 @@ function dump {             # Write-Log
 }
 
 
+function Get-RelativePath {
+    param (
+        [string]$relativeTo,
+        [string]$path
+    )
+
+    # Ensure the paths are fully qualified and use correct directory separators
+    if (-not ($relativeTo -like "*\") -and 
+        -not ($relativeTo -like "*/")) {
+        $relativeTo += "\"
+    }
+
+    $uriRelativeTo = New-Object System.Uri($relativeTo)
+    $uriPath = New-Object System.Uri($path)
+
+    $relativeUri = $uriRelativeTo.MakeRelativeUri($uriPath)
+    $relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
+
+    # Replace forward slashes (Uri format) with the correct Windows system directory separator
+    return $relativePath -replace "/", "\"
+}
+
+
+
+function Get-RelativeFileList {
+    param(
+        [string]$BasePath
+    )
+    dump "Get-RelativeFileList $SourceDir" "DEBUG"
+    $files = Get-ChildItem -Path $BasePath -File -Recurse | 
+    ForEach-Object{
+           # [IO.Path]::GetRelativePath($BasePath, $_.FullName)
+           Get-RelativePath $BasePath $_.FullName
+    }
+    <#ForEach($f in $files) {
+            dump "Relative $($f.FullName)" "DEBUG"
+        [IO.Path]::GetRelativePath($BasePath, $f.FullName)
+    }#>
+    return $files
+}
+
+
+function removeDirectory{
+param($srcd)
+    dump "Removing childitem of $srcd."
+    $dirs = Get-ChildItem -Path $srcd -Directory -Recurse | Sort-Object FullName -Descending
+    foreach ($dir in $dirs) {
+        try {
+            if ((Get-ChildItem -Path $dir.FullName -Recurse -Force -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
+                Remove-Item -Path $dir.FullName -Force -Recurse -ErrorAction Stop
+                dump "Removed directory: $($dir.FullName)"
+            }
+        }
+        catch {
+            dump ("Failed to remove directory '{0}': {1}" -f $dir.FullName, $_) "WARNING"
+        }
+    }
+}
+
+
 # main
 try {
     # Clear or create report file
@@ -124,21 +184,6 @@ try {
     dump "Gathering file lists for comparison."
 
 
-    function Get-RelativeFileList {
-        param(
-            [string]$BasePath
-        )
-        dump "Get-RelativeFileList $SourceDir" "DEBUG"
-        $files = Get-ChildItem -Path $BasePath -File -Recurse | 
-        ForEach-Object{
-             [IO.Path]::GetRelativePath($BasePath, $_.FullName)
-        }
-        <#ForEach($f in $files) {
-             dump "Relative $($f.FullName)" "DEBUG"
-            [IO.Path]::GetRelativePath($BasePath, $f.FullName)
-        }#>
-        return $files
-    }
 
     $sourceFiles = Get-RelativeFileList -BasePath $SourceDir
     $extractedFiles = Get-RelativeFileList -BasePath $extractPath
@@ -188,22 +233,7 @@ try {
         }
     }
 
-   function removeDirectory{
-    param($srcd)
-        dump "Removing childitem of $srcd."
-        $dirs = Get-ChildItem -Path $srcd -Directory -Recurse | Sort-Object FullName -Descending
-        foreach ($dir in $dirs) {
-            try {
-                if ((Get-ChildItem -Path $dir.FullName -Recurse -Force -ErrorAction SilentlyContinue | Measure-Object).Count -eq 0) {
-                    Remove-Item -Path $dir.FullName -Force -Recurse -ErrorAction Stop
-                    dump "Removed directory: $($dir.FullName)"
-                }
-            }
-            catch {
-                dump ("Failed to remove directory '{0}': {1}" -f $dir.FullName, $_) "WARNING"
-            }
-        }
-    }
+
 
      # Optionally, remove any empty directories left in source after deleting files
         dump "Removing empty sub directories from source."
