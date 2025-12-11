@@ -85,12 +85,13 @@ function Get-RelativePath {
     $uriPath = New-Object System.Uri($path)
 
     $relativeUri = $uriRelativeTo.MakeRelativeUri($uriPath)
-     Add-Type -AssemblyName System.Net.Http
-    $relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
-    
+  
+  #  Add-Type -AssemblyName System.Net.Http
+  #  $relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
+    $relative2 = $relativeUri -replace "/", "\"
 
     # Replace forward slashes (Uri format) with the correct Windows system directory separator
-    return $relativePath -replace "/", "\"
+    return $relative2 
 }
 
 
