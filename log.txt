@@ -1,69 +1,107 @@
-compress and clean C:\wip\365\CDSS\debug\2025-11\20251111 			 
-2025-12-11 16:13:30 [INFO] Script started.
-2025-12-11 16:13:30 [INFO] Script started.
-2025-12-11 16:13:30 [INFO] Source directory: C:\wip\365\CDSS\debug\2025-11\20251111
-2025-12-11 16:13:30 [INFO] Source directory: C:\wip\365\CDSS\debug\2025-11\20251111
-2025-12-11 16:13:30 [INFO] Temporary destination: C:\Users\tmarriot\AppData\Local\Temp
-2025-12-11 16:13:30 [INFO] Temporary destination: C:\Users\tmarriot\AppData\Local\Temp
-2025-12-11 16:13:30 [INFO] Report path: C:\wip\365\CDSS\debug\2025-11\20251111\archived.log
-2025-12-11 16:13:30 [INFO] Report path: C:\wip\365\CDSS\debug\2025-11\20251111\archived.log
+compress and clean C:\wip\365\CDSS\result 			 
+2025-12-11 16:57:15 [INFO] Script started.
+2025-12-11 16:57:15 [INFO] Script started.
+2025-12-11 16:57:15 [INFO] Source directory: C:\wip\365\CDSS\result
+2025-12-11 16:57:15 [INFO] Source directory: C:\wip\365\CDSS\result
+2025-12-11 16:57:15 [INFO] Temporary destination: C:\Users\tmarriot\AppData\Local\Temp
+2025-12-11 16:57:15 [INFO] Temporary destination: C:\Users\tmarriot\AppData\Local\Temp
+2025-12-11 16:57:15 [INFO] Report path: C:\wip\365\CDSS\result\archived.log
+2025-12-11 16:57:15 [INFO] Report path: C:\wip\365\CDSS\result\archived.log
 PSVersion 5.1.22621.6133
 Framework .NET Framework 4.8.9310.0
-2025-12-11 16:13:30 [INFO] Compressing source directory to 'C:\Users\tmarriot\AppData\Local\Temp\archive_20251211161330.zip'.
-2025-12-11 16:13:30 [INFO] Compressing source directory to 'C:\Users\tmarriot\AppData\Local\Temp\archive_20251211161330.zip'.
-2025-12-11 16:14:14 [INFO] Compression completed successfully.
-2025-12-11 16:14:14 [INFO] Compression completed successfully.
-2025-12-11 16:14:14 [INFO] Total size of source files: 2.35 MB
-2025-12-11 16:14:14 [INFO] Total size of source files: 2.35 MB
-2025-12-11 16:14:14 [INFO] Zip size is: 0.7 MB compressed by 71% 
-2025-12-11 16:14:14 [INFO] Zip size is: 0.7 MB compressed by 71% 
-2025-12-11 16:14:14 [INFO] Clearing existing extracted directory 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
-2025-12-11 16:14:14 [INFO] Clearing existing extracted directory 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
-2025-12-11 16:14:14 [INFO] Extracting archive to 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
-2025-12-11 16:14:14 [INFO] Extracting archive to 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
-2025-12-11 16:14:34 [INFO] Extraction completed successfully.
-2025-12-11 16:14:34 [INFO] Extraction completed successfully.
-2025-12-11 16:14:34 [INFO] Gathering file lists for comparison.
-2025-12-11 16:14:34 [INFO] Gathering file lists for comparison.
-2025-12-11 16:14:34 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\debug\2025-11\20251111
-2025-12-11 16:14:34 [ERROR] Fatal error: Unable to find type [System.Web.HttpUtility].
-2025-12-11 16:14:34 [ERROR] Fatal error: Unable to find type [System.Web.HttpUtility].
-C:\Users\tmarriot\AppData\Local\Temp\0f61ce25-68de-44d0-81dd-e9924886d216.tmp
-C:\Users\tmarriot\AppData\Local\Temp\0ffff887-b684-47ce-aa47-3be9673c6ce9.tmp
-C:\Users\tmarriot\AppData\Local\Temp\10886856-d3d2-428e-bad9-fac81b7b6add.tmp
-C:\Users\tmarriot\AppData\Local\Temp\34d4caf1-02c7-475b-9c53-9b2ea8892156.tmp
-C:\Users\tmarriot\AppData\Local\Temp\492bb145-2438-4a60-98db-a1231a2ca7ec.tmp
-C:\Users\tmarriot\AppData\Local\Temp\52b9e357-f678-4e79-a621-49061aa8bb9c.tmp
-C:\Users\tmarriot\AppData\Local\Temp\568c25d1-331f-46ba-8e0b-706e41bee756.tmp
-C:\Users\tmarriot\AppData\Local\Temp\57e4f2d3-412d-41e3-ba58-53f130b8575f.tmp
-C:\Users\tmarriot\AppData\Local\Temp\5e42814b-03cb-47aa-bbca-ce257c5de9d4.tmp
-C:\Users\tmarriot\AppData\Local\Temp\5f1d8dbb-4d3e-4da6-a878-8b6af4be4a79.tmp
-C:\Users\tmarriot\AppData\Local\Temp\641edfc8-1c7a-4bf0-95a6-0cc9b4bdfa8c.tmp
-C:\Users\tmarriot\AppData\Local\Temp\686b1f95-0374-476b-bdd7-307c1b3011e1.tmp
-C:\Users\tmarriot\AppData\Local\Temp\6e7477b9-81b2-4eed-8789-edfbf1fc3a68.tmp
-C:\Users\tmarriot\AppData\Local\Temp\83ed0a97-09f3-44c5-9547-122e3754b725.tmp
-C:\Users\tmarriot\AppData\Local\Temp\83f12b84-31c9-4ea8-a65b-8a0e507467d8.tmp
-C:\Users\tmarriot\AppData\Local\Temp\8efca634-81dc-4736-af19-87fb21f95e79.tmp
-C:\Users\tmarriot\AppData\Local\Temp\a2d9db77-6d33-480c-bcd3-572e901597ee.tmp
-C:\Users\tmarriot\AppData\Local\Temp\a31c03c1-e714-49a3-a1b0-06f3cfdaba71.tmp
-C:\Users\tmarriot\AppData\Local\Temp\a7271615-f340-4e1f-9025-0a0a2a67abfb.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ab1ca41a-fa14-4641-8f80-877d5104ef82.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ab665654-d301-4194-8b69-2abafe115b03.tmp
-C:\Users\tmarriot\AppData\Local\Temp\af18ad4e-10c7-4d48-827d-da9227d8928d.tmp
-C:\Users\tmarriot\AppData\Local\Temp\APPX.1yb6ywbwkxubn7wata1j56jyf.tmp
-C:\Users\tmarriot\AppData\Local\Temp\APPX.p_apaxoghz8xch6n1stb9rshg.tmp
-C:\Users\tmarriot\AppData\Local\Temp\b75dc27e-e42f-42e1-871b-90b3980bdf36.tmp
-C:\Users\tmarriot\AppData\Local\Temp\b91f51d2-ecde-466f-8b67-4fde22ce34f7.tmp
-C:\Users\tmarriot\AppData\Local\Temp\be8b96ba-a369-4f2c-991e-6a47a1b4d360.tmp
-C:\Users\tmarriot\AppData\Local\Temp\c277a838-bb21-4187-a65b-2eb8aa41ebe2.tmp
-C:\Users\tmarriot\AppData\Local\Temp\c754abc4-2fe5-42ab-a19b-a50a303697ea.tmp
-C:\Users\tmarriot\AppData\Local\Temp\d677f0be-a605-4765-8208-f010ebdf6c09.tmp
-C:\Users\tmarriot\AppData\Local\Temp\e1dee6d7-6eab-47ef-a7a9-69bb83e674ea.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ebd1bf1e-81bc-44d1-82fe-7648aaaaab0b.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ee19a47f-54a8-4986-8592-5afa2d24862d.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ExchangePerflog_8484fa3131df3ed401b8a9bd.dat
-C:\Users\tmarriot\AppData\Local\Temp\f0ee95a9-ff73-4b13-8306-5e626e1da14d.tmp
-C:\Users\tmarriot\AppData\Local\Temp\ff90e88e-31a2-4631-b6ea-34122d4c5a1c.tmp
-C:\Users\tmarriot\AppData\Local\Temp\mat-debug-18752.log
-C:\Users\tmarriot\AppData\Local\Temp\mat-debug-20100.log
-C:\Users\tmarriot\AppData\Local\Temp\mat-debug-22972.log
+2025-12-11 16:57:15 [INFO] Compressing source directory to 'C:\Users\tmarriot\AppData\Local\Temp\archive_20251211165715.zip'.
+2025-12-11 16:57:15 [INFO] Compressing source directory to 'C:\Users\tmarriot\AppData\Local\Temp\archive_20251211165715.zip'.
+2025-12-11 16:57:17 [INFO] Compression completed successfully.
+2025-12-11 16:57:17 [INFO] Compression completed successfully.
+2025-12-11 16:57:17 [INFO] Total size of source files: 0.04 MB
+2025-12-11 16:57:17 [INFO] Total size of source files: 0.04 MB
+2025-12-11 16:57:17 [INFO] Zip size is: 0.0 MB compressed by 49% 
+2025-12-11 16:57:17 [INFO] Zip size is: 0.0 MB compressed by 49% 
+2025-12-11 16:57:17 [INFO] Clearing existing extracted directory 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 16:57:17 [INFO] Clearing existing extracted directory 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 16:57:17 [INFO] Extracting archive to 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 16:57:17 [INFO] Extracting archive to 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 16:57:17 [INFO] Extraction completed successfully.
+2025-12-11 16:57:17 [INFO] Extraction completed successfully.
+2025-12-11 16:57:17 [INFO] Gathering file lists for comparison.
+2025-12-11 16:57:17 [INFO] Gathering file lists for comparison.
+2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result
+2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result
+2025-12-11 16:57:17 [INFO] Source files found: 27
+2025-12-11 16:57:17 [INFO] Source files found: 27
+2025-12-11 16:57:17 [INFO] Extracted files found: 27
+2025-12-11 16:57:17 [INFO] Extracted files found: 27
+2025-12-11 16:57:17 [INFO] Verification succeeded: All source files are in extracted directory.
+2025-12-11 16:57:17 [INFO] Verification succeeded: All source files are in extracted directory.
+2025-12-11 16:57:17 [INFO] Deleting source files.
+2025-12-11 16:57:17 [INFO] Deleting source files.
+2025-12-11 16:57:17 [ERROR] Failed to delete 'C:\wip\365\CDSS\result\2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result': The filename, directory name, or volume label syntax is incorrect.
+
+2025-12-11 16:57:17 [ERROR] Failed to delete 'C:\wip\365\CDSS\result\2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result': The filename, directory name, or volume label syntax is incorrect.
+
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\archived.log
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\archived.log
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.02304817.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.02304817.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03002359.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03002359.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03100244.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03100244.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03151939.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03151939.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03302089.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03302089.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03400229.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.03400229.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04002631.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04002631.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04151988.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04151988.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04452152.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.04452152.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.05100231.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.05100231.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.05152144.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.05152144.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06252174.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06252174.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06312172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06312172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06392175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06392175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06512172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06512172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06592175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.06592175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07072175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07072175.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07152179.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07152179.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07212171.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07212171.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07272176.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07272176.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07392180.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07392180.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07512172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.07512172.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08092174.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08092174.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08212173.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08212173.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08412176.xml
+2025-12-11 16:57:17 [INFO] Deleted C:\wip\365\CDSS\result\Import20251111.08412176.xml
+2025-12-11 16:57:17 [INFO] Deleted 26 files from source directory.
+2025-12-11 16:57:17 [INFO] Deleted 26 files from source directory.
+2025-12-11 16:57:17 [ERROR] Failed to delete 1 files from source:
+2025-12-11 16:57:17 [ERROR] Failed to delete 1 files from source:
+2025-12-11 16:57:17 [ERROR] FAILED DELETE: 2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result
+2025-12-11 16:57:17 [ERROR] FAILED DELETE: 2025-12-11 16:57:17 [DEBUG] Get-RelativeFileList C:\wip\365\CDSS\result
+2025-12-11 16:57:17 [INFO] Removing empty sub directories from source.
+2025-12-11 16:57:17 [INFO] Removing empty sub directories from source.
+2025-12-11 16:57:17 [INFO] Removing childitem of C:\wip\365\CDSS\result.
+2025-12-11 16:57:17 [INFO] Removing childitem of C:\wip\365\CDSS\result.
+2025-12-11 16:57:17 [INFO] Remaining files in source directory after cleanup: 1
+2025-12-11 16:57:17 [INFO] Remaining files in source directory after cleanup: 1
+2025-12-11 16:57:17 [INFO] Script completed successfully.
+2025-12-11 16:57:17 [INFO] Script completed successfully.

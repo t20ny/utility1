@@ -49,9 +49,10 @@ param(
     [string]$ReportPath
 )
 
-
+$ReportContent=""
+$ReportName="archived.log"
 if(-not($ReportPath)){
-    $ReportPath="$SourceDir\archived.log"
+    $ReportPath="$SourceDir\$ReportName"
 }
 
 
@@ -62,7 +63,9 @@ function dump {             # Write-Log
     )
     $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $msg="$time [$Level] $Message" 
-    $msg | Tee-Object -FilePath $ReportPath -Append
+    #$msg | Tee-Object -FilePath $ReportPath -Append
+    $msg | Tee-Object $ReportContent -Append
+    
     write-host $msg -ForegroundColor Green
     # Write-Output $msg
 }
@@ -203,7 +206,7 @@ try {
 
 
 
-    $sourceFiles = Get-RelativeFileList -BasePath $SourceDir
+    $sourceFiles = Get-RelativeFileList -BasePath $SourceDir 
     $extractedFiles = Get-RelativeFileList -BasePath $extractPath
 
     dump ("Source files found: {0}" -f $sourceFiles.Count)
@@ -265,6 +268,7 @@ try {
 
  
     dump "Script completed successfully."
+    New-Item -path $ReportPath -Value $ReportContent -ItemType File -Force
 
 } 
 catch {
