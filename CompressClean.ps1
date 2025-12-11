@@ -76,17 +76,11 @@ try {
     dump "Temporary destination: $TempDest"
     dump "Report path: $ReportPath"
 
-    write-host "[Environment]::Version"
-        [Environment]::Version
+    write-host "DotNet [Environment]::Version  $(([Environment]::Version).Major)"
 
-    write-host "$PSVersionTable.PSVersion"
-        $PSVersionTable.PSVersion
+    write-host "$PSVersionTable.PSVersion $(($PSVersionTable).PSVersion)"
 
-    write-host "$Env:PSModulePath"
-        $Env:PSModulePath
-
-    write-host "[system interop info]::FrameworkDescription"
-[System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription
+    write-host "system interop Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
 
 
 
