@@ -39,3 +39,13 @@ C:\Users\tonym\OneDrive\Documents\PowerShell\Modules;C:\Program Files\PowerShell
 2025-12-11 11:51:20 [INFO] Remaining files in source directory after cleanup: 0
 2025-12-11 11:51:20 [INFO] Script completed successfully.
 
+ source "F:\bak\old" 
+ tempz "F:\tmp" 
+ report "F:\bak\old.Log.txt" 
+2025-12-11 12:44:27 [INFO] Script started.
+2025-12-11 12:44:27 [INFO] Source directory: F:\bak\old
+2025-12-11 12:44:27 [INFO] Temporary destination: F:\tmp
+2025-12-11 12:44:27 [INFO] Report path: F:\bak\old.Log.txt
+PSVersion 7.5.4
+system interop Framework .NET 9.0.10
+2025-12-11 12:44:27 [INFO] Compressing source directory to 'F:\tmp\archive_20251211124427.zip'.
