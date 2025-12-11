@@ -61,8 +61,57 @@ function dump {             # Write-Log
         [string]$Level = "INFO"
     )
     $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-    "$time [$Level] $Message" | Tee-Object -FilePath $ReportPath -Append
+    $msg="$time [$Level] $Message" 
+    $msg | Tee-Object -FilePath $ReportPath -Append
+    write-host $msg -ForegroundColor Green
+    # Write-Output $msg
 }
+
+
+function DecodeUrl {
+    param (
+        [string]$url
+    )
+
+    # Define the URL encoding table
+    $encodingTable = @{
+        '%20' = ' '
+        '%21' = '!'
+        '%22' = '"'
+        '%23' = '#'
+        '%24' = '$'
+        '%25' = '%'
+        '%26' = '&'
+        '%27' = "'"
+        '%28' = '('
+        '%29' = ')'
+        '%2A' = '*'
+        '%2B' = '+'
+        '%2C' = ','
+        '%2F' = '/'
+        '%3A' = ':'
+        '%3B' = ';'
+        '%3D' = '='
+        '%3E' = '>'
+        '%3F' = '?'
+        '%40' = '@'
+        '%5B' = '['
+        '%5D' = ']'
+        '%5E' = '^'
+        '%60' = '`'
+        '%7B' = '{'
+        '%7D' = '}'
+        '%7E' = '~'
+    }
+
+    # Replace each encoded character with its decoded counterpart
+    foreach ($key in $encodingTable.Keys) {
+        $url = $url -replace $key, $encodingTable[$key]
+    }
+
+    return $url
+}
+
 
 
 function Get-RelativePath {
@@ -81,7 +130,8 @@ function Get-RelativePath {
     $uriPath = New-Object System.Uri($path)
 
     $relativeUri = $uriRelativeTo.MakeRelativeUri($uriPath)
-    $relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
+    #$relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
+    $relativePath = DecodeUrl $relativeUri
 
     # Replace forward slashes (Uri format) with the correct Windows system directory separator
     return $relativePath -replace "/", "\"
@@ -139,8 +189,7 @@ try {
     # write-host "DotNet [Environment]::Version  $(([Environment]::Version).Major)"
 
     write-host "PSVersion $(($PSVersionTable).PSVersion)"
-
-    write-host "system interop Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
+    write-host "Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
 
 
 
@@ -217,6 +266,7 @@ try {
         $fullPath = Join-Path $SourceDir $relFile
         try {
             Remove-Item -Path $fullPath -Force -ErrorAction Stop
+            dump "Deleted $fullPath"
         }
         catch {
             dump ("Failed to delete '{0}': {1}" -f $fullPath, $_) "ERROR"
