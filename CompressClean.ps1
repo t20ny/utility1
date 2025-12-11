@@ -49,7 +49,7 @@ param(
     [string]$ReportPath
 )
 
-$ReportContent=""
+$script:ReportContent=""
 $ReportName="archived.log"
 if(-not($ReportPath)){
     $ReportPath="$SourceDir\$ReportName"
@@ -64,7 +64,7 @@ function dump {             # Write-Log
     $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $msg="$time [$Level] $Message" 
     #$msg | Tee-Object -FilePath $ReportPath -Append
-    $ReportContent += $msg
+    $script:ReportContent= "$script:ReportContent `r`n$msg"
     
     write-host $msg -ForegroundColor Green
     # Write-Output $msg
@@ -103,7 +103,7 @@ function Get-RelativeFileList {
     param(
         [string]$BasePath
     )
-    dump "Get-RelativeFileList $SourceDir" "DEBUG"
+    #dump "Get-RelativeFileList $SourceDir" "DEBUG"
     $files = Get-ChildItem -Path $BasePath -File -Recurse | 
     ForEach-Object{
            # [IO.Path]::GetRelativePath($BasePath, $_.FullName)
@@ -268,7 +268,7 @@ try {
 
  
     dump "Script completed successfully."
-    New-Item -path $ReportPath -Value $ReportContent -ItemType File -Force
+    New-Item -path $ReportPath -Value $script:ReportContent -ItemType File -Force
 
 } 
 catch {
