@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Compress a source directory, extract to a temp destination, verify contents, delete source files, and write a report. V1
+Compress a source directory, extract to a temp destination, verify contents, delete source files, and write a report. V1.1
 
 VS CODE AI TOOTKIT:
 OpenAI GPT-4.1-mini, remote via GitHub
