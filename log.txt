@@ -6,3 +6,79 @@ compress and clean C:\wip\365\interface\temp
 PSVersion 5.1.22621.6133
 Framework .NET Framework 4.8.9310.0
 2025-12-11 17:20:22 [INFO] Compressing source directory to 'C:\Users\tmarriot\AppData\Local\Temp\archive_20251211172022.zip'.
+2025-12-11 17:20:23 [INFO] Compression completed successfully.
+2025-12-11 17:20:23 [INFO] Total size of source files: 0.09 MB
+2025-12-11 17:20:23 [INFO] Zip size is: 0.0 MB compressed by 75% 
+2025-12-11 17:20:23 [INFO] Clearing existing extracted directory 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 17:20:23 [INFO] Extracting archive to 'C:\Users\tmarriot\AppData\Local\Temp\extracted'.
+2025-12-11 17:20:23 [INFO] Extraction completed successfully.
+2025-12-11 17:20:23 [INFO] Gathering file lists for comparison.
+2025-12-11 17:20:23 [INFO] Source files found: 29
+2025-12-11 17:20:23 [INFO] Extracted files found: 29
+2025-12-11 17:20:23 [INFO] Verification succeeded: All source files are in extracted directory.
+2025-12-11 17:20:23 [INFO] Deleting source files.
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\archived.log
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\CINC_ReceiveALL_ABS.cmd
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\CINC_ReceiveALL_ABS_log%20errors%2015oct2025.txt': Cannot find path 'C:\wip\365\interface\temp\CINC_ReceiveALL_ABS_log%20errors%2015oct2025.txt' because it does not exist.
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\CINC_ReceiveALL_ABS_log.txt
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\CINC_ResendALL_ABS_log.txt
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\CINC_SendALLwoDARWIN_ABS_log.txt
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\doImport1.ps1
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\doImport1_org.ps1
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\getCompass%20log.txt': Cannot find path 'C:\wip\365\interface\temp\getCompass%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\getCOMPASS.ps1
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv10%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv10%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv116%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv116%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv118%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv118%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv20%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv20%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv30%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv30%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv806%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv806%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv902%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv902%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Recv918%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Recv918%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send10%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send10%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send10nz%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send10nz%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send11%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send11%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send116%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send116%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send118%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send118%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send20%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send20%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send30%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send30%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send806%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send806%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send918%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send918%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [ERROR] Failed to delete 'C:\wip\365\interface\temp\Send924%20log.txt': Cannot find path 'C:\wip\365\interface\temp\Send924%20log.txt' because it does not exist.
+2025-12-11 17:20:23 [INFO] Deleted C:\wip\365\interface\temp\Send_WE310D_log.txt
+2025-12-11 17:20:23 [INFO] Deleted 9 files from source directory.
+2025-12-11 17:20:23 [ERROR] Failed to delete 20 files from source:
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: CINC_ReceiveALL_ABS_log%20errors%2015oct2025.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: getCompass%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv10%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv116%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv118%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv20%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv30%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv806%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv902%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Recv918%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send10%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send10nz%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send11%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send116%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send118%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send20%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send30%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send806%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send918%20log.txt
+2025-12-11 17:20:23 [ERROR] FAILED DELETE: Send924%20log.txt
+2025-12-11 17:20:23 [INFO] Removing empty sub directories from source.
+2025-12-11 17:20:23 [INFO] Removing childitem of C:\wip\365\interface\temp.
+2025-12-11 17:20:23 [INFO] Remaining files in source directory after cleanup: 20
+2025-12-11 17:20:23 [INFO] Script completed successfully.
+
+
+    Directory: C:\wip\365\interface\temp
+
+
+Mode                 LastWriteTime         Length Name                                                                 
+----                 -------------         ------ ----                                                                 
+-a----        11/12/2025   5:20 PM           7433 archived.log                                                         
+
+
