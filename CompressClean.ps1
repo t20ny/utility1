@@ -64,7 +64,7 @@ function dump {             # Write-Log
     $time = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $msg="$time [$Level] $Message" 
     #$msg | Tee-Object -FilePath $ReportPath -Append
-    $msg | Tee-Object $ReportContent -Append
+    $ReportContent += $msg
     
     write-host $msg -ForegroundColor Green
     # Write-Output $msg
