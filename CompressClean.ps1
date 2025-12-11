@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Compress a source directory, extract to a temp destination, verify contents, delete source files, and write a report. V1.1
+Compress a source directory, extract to a temp destination, verify contents, delete source files, and write a report. V1.2
 
 VS CODE AI TOOTKIT:
 OpenAI GPT-4.1-mini, remote via GitHub
@@ -68,51 +68,6 @@ function dump {             # Write-Log
 }
 
 
-function DecodeUrl {
-    param (
-        [string]$url
-    )
-
-    # Define the URL encoding table
-    $encodingTable = @{
-        '%20' = ' '
-        '%21' = '!'
-        '%22' = '"'
-        '%23' = '#'
-        '%24' = '$'
-        '%25' = '%'
-        '%26' = '&'
-        '%27' = "'"
-        '%28' = '('
-        '%29' = ')'
-        '%2A' = '*'
-        '%2B' = '+'
-        '%2C' = ','
-        '%2F' = '/'
-        '%3A' = ':'
-        '%3B' = ';'
-        '%3D' = '='
-        '%3E' = '>'
-        '%3F' = '?'
-        '%40' = '@'
-        '%5B' = '['
-        '%5D' = ']'
-        '%5E' = '^'
-        '%60' = '`'
-        '%7B' = '{'
-        '%7D' = '}'
-        '%7E' = '~'
-    }
-
-    # Replace each encoded character with its decoded counterpart
-    foreach ($key in $encodingTable.Keys) {
-        $url = $url -replace $key, $encodingTable[$key]
-    }
-
-    return $url
-}
-
-
 
 function Get-RelativePath {
     param (
@@ -130,8 +85,9 @@ function Get-RelativePath {
     $uriPath = New-Object System.Uri($path)
 
     $relativeUri = $uriRelativeTo.MakeRelativeUri($uriPath)
-    #$relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
-    $relativePath = DecodeUrl $relativeUri
+     Add-Type -AssemblyName System.Net.Http
+    $relativePath = [System.Web.HttpUtility]::UrlDecode($relativeUri.ToString())
+    
 
     # Replace forward slashes (Uri format) with the correct Windows system directory separator
     return $relativePath -replace "/", "\"
@@ -211,6 +167,18 @@ try {
         dump "Error during compression: $_" "ERROR"
         throw $_
     }
+
+    # ZIPPED  all files in the source directory
+    $files = Get-ChildItem -Path $SourceDir -Recurse -File
+    # Calculate total size of files added to the zip
+    foreach ($file in $files) {
+        $totalSize += $file.Length
+    }
+    $zipSize =(get-item -path $zipName).Length
+    $msg = "Total size of source files: {0:N2} MB" -f ([math]::Round($totalSize / 1MB, 2))
+    dump $msg
+    $msg = "Zip size is: {0:N1} MB compressed by {1:N0}% " -f ([math]::Round($zipSize / 1MB, 1)), ([math]::Round(100* (1- $zipSize / $totalSize), 0))
+    dump $msg
 
     # Extract the archive to TempDest\extracted
     $extractPath = Join-Path $TempDest "extracted"
