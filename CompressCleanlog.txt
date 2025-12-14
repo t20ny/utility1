@@ -49,3 +49,27 @@ C:\Users\tonym\OneDrive\Documents\PowerShell\Modules;C:\Program Files\PowerShell
 PSVersion 7.5.4
 system interop Framework .NET 9.0.10
 2025-12-11 12:44:27 [INFO] Compressing source directory to 'F:\tmp\archive_20251211124427.zip'.
+ source "F:\bak\old\old ying-desktop\Ying_and_Samuel" 
+ tempz "F:\tmp" 
+ report "F:\bak\Ying_and_Samuel.Log.txt" 
+2025-12-15 07:40:12 [INFO] Script started.
+2025-12-15 07:40:12 [INFO] Source directory: F:\bak\old\old ying-desktop\Ying_and_Samuel
+2025-12-15 07:40:12 [INFO] Temporary destination: F:\tmp
+2025-12-15 07:40:12 [INFO] Report path: F:\bak\Ying_and_Samuel.Log.txt
+PSVersion 7.5.4
+system interop Framework .NET 9.0.10
+2025-12-15 07:40:12 [INFO] Compressing source directory to 'F:\tmp\archive_20251215074012.zip'.
+2025-12-15 07:40:15 [INFO] Compression completed successfully.
+2025-12-15 07:40:15 [INFO] Clearing existing extracted directory 'F:\tmp\extracted'.
+2025-12-15 07:40:31 [INFO] Extracting archive to 'F:\tmp\extracted'.
+2025-12-15 07:40:31 [INFO] Extraction completed successfully.
+2025-12-15 07:40:31 [INFO] Gathering file lists for comparison.
+2025-12-15 07:40:31 [INFO] Source files found: 96
+2025-12-15 07:40:31 [INFO] Extracted files found: 96
+2025-12-15 07:40:31 [INFO] Verification succeeded: All source files are in extracted directory.
+2025-12-15 07:40:31 [INFO] Deleting source files.
+2025-12-15 07:40:32 [INFO] Deleted 96 files from source directory.
+2025-12-15 07:40:32 [INFO] Removing empty sub directories from source.
+2025-12-15 07:40:32 [INFO] Removing childitem of F:\bak\old\old ying-desktop\Ying_and_Samuel.
+2025-12-15 07:40:32 [INFO] Remaining files in source directory after cleanup: 95
+2025-12-15 07:40:32 [INFO] Script completed successfully.
