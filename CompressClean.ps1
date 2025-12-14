@@ -43,7 +43,7 @@ param(
     [string]$SourceDir="D:\bak",
 
     [Parameter(Mandatory = $false)]
-    [string]$TempDest="D:\tmp",
+    [string]$TempDest=$env:TMP,
 
     [Parameter(Mandatory = $false)]
     [string]$ReportPath
@@ -53,6 +53,13 @@ $script:ReportContent=""
 $ReportName="archived.log"
 if(-not($ReportPath)){
     $ReportPath="$SourceDir\$ReportName"
+}
+else {
+    $ReportName = $ReportPath.Split('\')[-1]
+    if (-not($ReportName -match ".txt")){
+        $dt=Get-Date -Format "yyyyMMdd"
+        $ReportName = "$ReportName$dt.txt"
+    }
 }
 
 
@@ -65,9 +72,8 @@ function dump {             # Write-Log
     $msg="$time [$Level] $Message" 
     #$msg | Tee-Object -FilePath $ReportPath -Append
     $script:ReportContent= "$script:ReportContent `r`n$msg"
-    
-    write-host $msg -ForegroundColor Green
-    # Write-Output $msg
+    if ($Level -eq "ERROR"){write-host $msg -ForegroundColor red}
+    else {    write-host $msg -ForegroundColor Green}
 }
 
 
@@ -140,19 +146,18 @@ try {
     # Clear or create report file
     if(Test-Path $ReportPath) { Clear-Content $ReportPath -ErrorAction Stop }
     else { New-Item -Path $ReportPath -ItemType File -Force | Out-Null }
+    $me=$env:COMPUTERNAME
+    $my=$MyInvocation.InvocationName
+    $us=$env:USERNAME
 
-    dump "Script started."
-    dump "Source directory: $SourceDir"
-    dump "Temporary destination: $TempDest"
-    dump "Report path: $ReportPath"
-
-    # write-host "DotNet [Environment]::Version  $(([Environment]::Version).Major)"
-
-    write-host "PSVersion $(($PSVersionTable).PSVersion)"
-    write-host "Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
-
-
-
+    $dump= "Script $my started on $me by $us. "
+    $dump+="Source directory: $SourceDir. "
+    $dump+="Temporary destination: $TempDest. "
+    $dump+="Report path: $ReportPath. "
+    $dump+="PSVersion $(($PSVersionTable).PSVersion). "
+    $dump+="Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription). "
+    New-Item -Path "$SourceDir\cleanup.txt" -Value $dump
+    dump $dump
     # Validate TempDest exists or create
     if (-not (Test-Path $TempDest)) {
         dump "Temporary destination folder does not exist. Creating '$TempDest'."
@@ -204,8 +209,6 @@ try {
     # Get list of source files and extracted files (relative paths)
     dump "Gathering file lists for comparison."
 
-
-
     $sourceFiles = Get-RelativeFileList -BasePath $SourceDir 
     $extractedFiles = Get-RelativeFileList -BasePath $extractPath
 
@@ -255,17 +258,14 @@ try {
         }
     }
 
+    # Optionally, remove any empty directories left in source after deleting files
+    dump "Removing empty sub directories from source."
+    removeDirectory $SourceDir 
+    $finalFileCount = (Get-ChildItem -Path $SourceDir -File -Recurse | Measure-Object).Count
 
-
-     # Optionally, remove any empty directories left in source after deleting files
-        dump "Removing empty sub directories from source."
-        removeDirectory $SourceDir 
-        $finalFileCount = (Get-ChildItem -Path $SourceDir -File -Recurse | Measure-Object).Count
-    
-        dump ("Remaining files in source directory after cleanup: {0}" -f $finalFileCount)
+    dump ("Remaining files in source directory after cleanup: {0}" -f $finalFileCount)
 
     move-item -path  $zipName -Destination $SourceDir 
-
  
     dump "Script completed successfully."
     New-Item -path $ReportPath -Value $script:ReportContent -ItemType File -Force
