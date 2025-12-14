@@ -1,2 +1,3 @@
-COMPRESS.CMD
-*.log*
+*.CMD
+*.log
+*log.txt
