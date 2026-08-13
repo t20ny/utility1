@@ -1,4 +1,4 @@
-<#
+<#                                           v1.0.0
 .SYNOPSIS
 Compress a source directory, extract to a temp destination, verify contents, delete source files, and write a report. V1.1
 
@@ -47,7 +47,44 @@ param(
 
     [Parameter(Mandatory = $false)]
     [string]$ReportPath
+,
+    # Override the output folder. Default: 'logs' beside this script.
+    [string]$LogDirectory
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$script:Version = '1.0.0'
+
+# --- Paths and log setup -----------------------------------------------------
+$scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+if (-not $LogDirectory) { $LogDirectory = Join-Path $scriptRoot 'logs' }
+if (-not (Test-Path $LogDirectory)) { New-Item -ItemType Directory -Path $LogDirectory -Force | Out-Null }
+
+$stamp    = Get-Date -Format 'yyyyMMdd_HHmmss'
+$hostName = $env:COMPUTERNAME
+$base     = Join-Path $LogDirectory ("CompressClean_{0}_{1}" -f $hostName, $stamp)
+$logFile  = "$base.log"
+$csvFile  = "$base.csv"
+$htmlFile = "$base.html"
+
+function Write-Log {
+    param([string]$Message, [string]$Level = 'INFO')
+    $line = "{0} [{1}] {2}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss.fff'), $Level, $Message
+    Add-Content -Path $logFile -Value $line
+    switch ($Level) {
+        'ERROR' { Write-Host $line -ForegroundColor Red }
+        'WARN'  { Write-Host $line -ForegroundColor Yellow }
+        default { Write-Host $line }
+    }
+}
+
+Write-Log "Process Inventory Worker v$($script:Version) starting on $hostName"
+Write-Log "User context : $env:USERDOMAIN\$env:USERNAME"
+Write-Log "PowerShell   : $($PSVersionTable.PSVersion)"
+Write-Log "Output base  : $base"
+
+
 
 
 if(-not($ReportPath)){
@@ -71,16 +108,16 @@ try {
     if(Test-Path $ReportPath) { Clear-Content $ReportPath -ErrorAction Stop }
     else { New-Item -Path $ReportPath -ItemType File -Force | Out-Null }
 
-    dump "Script started."
-    dump "Source directory: $SourceDir"
-    dump "Temporary destination: $TempDest"
-    dump "Report path: $ReportPath"
+    write-log "Script started."
+    write-log "Source directory: $SourceDir"
+    write-log "Temporary destination: $TempDest"
+    write-log "Report path: $ReportPath"
 
-    # write-host "DotNet [Environment]::Version  $(([Environment]::Version).Major)"
+    # Write-log "DotNet [Environment]::Version  $(([Environment]::Version).Major)"
 
-    write-host "PSVersion $(($PSVersionTable).PSVersion)"
+    Write-log "PSVersion $(($PSVersionTable).PSVersion)"
 
-    write-host "system interop Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
+    Write-log "system interop Framework $([System.Runtime.InteropServices.RuntimeInformation]::FrameworkDescription)"
 
 
 

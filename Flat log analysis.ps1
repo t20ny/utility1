@@ -1,8 +1,45 @@
-# Flat log analysis
+# Flat log analysis                              v1.0.1
 param (
 $s="syncthing.log", # source log file
 $d="syncthing.Log.csv" # destination csv
+,
+    # Override the output folder. Default: 'logs' beside this script.
+    [string]$LogDirectory
 )
+
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$script:Version = '1.0.1'
+
+# --- Paths and log setup -----------------------------------------------------
+$scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+if (-not $LogDirectory) { $LogDirectory = Join-Path $scriptRoot 'logs' }
+if (-not (Test-Path $LogDirectory)) { New-Item -ItemType Directory -Path $LogDirectory -Force | Out-Null }
+
+
+# --- Paths and log setup -----------------------------------------------------
+$scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+if (-not $LogDirectory) { $LogDirectory = Join-Path $scriptRoot 'logs' }
+if (-not (Test-Path $LogDirectory)) { New-Item -ItemType Directory -Path $LogDirectory -Force | Out-Null }
+
+$stamp    = Get-Date -Format 'yyyyMMdd_HHmmss'
+$hostName = $env:COMPUTERNAME
+$base     = Join-Path $LogDirectory ("FlatLogAnalysis_{0}_{1}" -f $hostName, $stamp)
+$logFile  = "$base.log"
+$csvFile  = "$base.csv"
+$htmlFile = "$base.html"
+
+function Write-Log {
+    param([string]$Message, [string]$Level = 'INFO')
+    $line = "{0} [{1}] {2}" -f (Get-Date -Format 'yyyy-MM-dd HH:mm:ss.fff'), $Level, $Message
+    Add-Content -Path $logFile -Value $line
+    switch ($Level) {
+        'ERROR' { Write-Host $line -ForegroundColor Red }
+        'WARN'  { Write-Host $line -ForegroundColor Yellow }
+        default { Write-Host $line }
+    }
+}
+
 
 $c=Get-Content -Path $s
 # $c
@@ -20,7 +57,7 @@ function showTimestamp{
                 Timestamp = $ts
                 Message = $msg
             }
-        write-host  $_.ToString()
+        write-log  $_.ToString()
         }
     } | Export-Csv -Path $d -NoTypeInformation
 }
@@ -35,7 +72,7 @@ function simple{
             }
             
         }
-        write-host  $_.ToString()
+        write-log  $_.ToString()
     } | Export-Csv -Path $d -NoTypeInformation
 }
 
@@ -77,5 +114,5 @@ $c | Where-Object { $_ -match $guid1} |ForEach-Object {
         }
         
     }
-     write-host  $_.ToString()
+     write-log  $_.ToString()
 } | Export-Csv -Path $d -NoTypeInformation
