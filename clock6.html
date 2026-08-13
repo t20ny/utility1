@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAVASCRIPT CLOCK</title>
+        <style>
+             body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+     
+    }
+
+    .clock {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: black;
+    }
+
+    .time {
+      font-size: large;
+      font-weight: bold;
+      color: rgb(255, 55, 0);
+
+    }
+
+    .date-time {
+      font-size: large;
+      font-weight: bold;
+      color: rgb(255, 147, 85);
+
+    }
+
+    @media screen and (max-width: 1024px) {
+      .time {
+        font-size: 300px;
+      }
+      .date-time {
+        font-size: 60px;
+      }
+    }
+               
+        </style>
+    
+  </head>
+  <body>
+    <div class="clock">
+      <div class="time"></div>
+      <div class="date-time"></div> 
+     
+    </div>
+
+
+<script>
+  // digital clock
+  var time = document.querySelector('.time');
+  var dateTime = document.querySelector('.date-time');
+
+  function updateClock() {
+    // Get the current time, day , month and year
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes();
+    //var seconds = now.getSeconds();
+    var day = now.getDay();
+    var date = now.getDate();
+    var month = now.getMonth();
+    var year = now.getFullYear();
+
+    // store day and month name in an array
+    var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+      // format date and time
+      //hours = hours % 12 || 12;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      //seconds = seconds < 10 ? '0' + seconds : seconds;
+      date = date < 10 ? '0' + date : date;
+
+      // display date and time
+      //var period = hours < 12 ? 'PM' : 'AM';
+      //time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + period;
+      time.innerHTML = hours + ':' + minutes ;
+      dateTime.innerHTML = dayNames[day] + '<br>    ' + date +  ' ' + monthNames[month] + ' ' + year;
+  }
+
+  updateClock();
+  setInterval(updateClock, 60000); // shows accuracy to 30 seconds
+
+</script>
+<noscript>Sorry, your browser does not have JavaScript enabled</noscript>
+</body>
+</html> 
