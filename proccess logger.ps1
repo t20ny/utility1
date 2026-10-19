@@ -1,9 +1,9 @@
 <#
 .SYNOPSIS
-    Process Inventory Worker - collects a full inventory of running processes.
+    Process Logger is a Worker script that collects a full inventory of running processes  v1.0.0.
 
 .DESCRIPTION
-    Enumerates every running process on the local server and reports, per process:
+    Enumerates every running process on the local host and reports, per process:
         - Process name and PID
         - Executable path
         - Owning Windows service(s), if the process hosts any (the "caller")
@@ -28,13 +28,13 @@
 
 .NOTES
     Project : ProcessInventory
-    Author  : Claude ( t20ny )
+    Author  : Claude by t20ny 
     Version : 1.0.0  (2026-08-05)  Initial release.
     Policy  : Designed for ExecutionPolicy RemoteSigned (run a local copy).
 
 .EXAMPLE
-    .\Invoke-ProcessInventory.ps1
-    Runs the inventory and writes CSV/HTML/log into .\logs
+    .\'Process Logger.ps1'
+    Runs the process inventory logger and writes CSV/HTML/log into .\logs
 #>
 [CmdletBinding()]
 param(
@@ -53,7 +53,7 @@ if (-not (Test-Path $LogDirectory)) { New-Item -ItemType Directory -Path $LogDir
 
 $stamp    = Get-Date -Format 'yyyyMMdd_HHmmss'
 $hostName = $env:COMPUTERNAME
-$base     = Join-Path $LogDirectory ("ProcessInventory_{0}_{1}" -f $hostName, $stamp)
+$base     = Join-Path $LogDirectory ("ProcessesInventory_{0}_{1}" -f $hostName, $stamp)
 $logFile  = "$base.log"
 $csvFile  = "$base.csv"
 $htmlFile = "$base.html"
@@ -225,7 +225,10 @@ foreach ($p in $cimProcs) {
     $vendor = $null; $vendorSource = $null
     if     ($signer)  { $vendor = $signer;        $vendorSource = 'Signature' }
     elseif ($company) { $vendor = $company;       $vendorSource = 'VersionInfo' }
-    elseif ($reg -and $reg.Publisher) { $vendor = $reg.Publisher; $vendorSource = 'Registry' }
+    elseif ($reg -and $reg.Publisher) { 
+        $vendor = $reg.Publisher
+        $vendorSource = 'Registry' 
+    }
     else   { $vendorSource = 'Unknown - needs enrichment' }
 
     # Website: registry only at this stage; blank = enrich later
@@ -263,8 +266,23 @@ foreach ($p in $cimProcs) {
         FileVersion       = $fileVersion
         CommandLine       = $p.CommandLine
     })
+
+   
 }
 Write-Progress -Activity 'Process inventory' -Completed
+
+# --- save list of processes to db in memory for enrichment later ---------------------
+ #
+    $sorted = $rows | Sort-Object Name
+    $prev = "record1"   
+    $rows = foreach ($r in $sorted) {
+        $name = $r.Name
+        if ($prev -ne $name) {
+            .\Data.ps1 -table procdb -insert "$($r.Name),$($r.Vendor),$($r.owningservice),$($r.account),$($r.PId)"  # add the tuple to the db in memory
+            $prev = $name
+        }
+    }
+
 
 # --- CSV ----------------------------------------------------------------------
 $sorted = $rows | Sort-Object Name, PID
