@@ -25,7 +25,7 @@
     .time {
       font-size: large;
       font-weight: bold;
-      color: red;
+      color: white;
 
     }
 
@@ -85,6 +85,7 @@
       // display date and time
       //var period = hours < 12 ? 'PM' : 'AM';
       //time.innerHTML = hours + ':' + minutes + ':' + seconds + ' ' + period;
+      time.style.color = hours > 20 ? 'red' : 'white';
       time.innerHTML = hours + ':' + minutes ;
       dateTime.innerHTML = dayNames[day] + '<br>    ' + date +  ' ' + monthNames[month] + ' ' + year;
   }
@@ -94,7 +95,6 @@
   setTimeout(function () {
     time.style.color = 'white';
   }, 30 * 60 * 1000);
-
 </script>
 <noscript>Sorry, your browser does not have JavaScript enabled</noscript>
 </body>
