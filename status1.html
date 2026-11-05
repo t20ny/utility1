@@ -23,7 +23,7 @@
     }
 
     .time {
-      font-size: clamp(80px, 16vw, 240px);
+      font-size: clamp(64px, 16vw, 240px);
       font-weight: bold;
       color: white;
 
@@ -34,6 +34,13 @@
       font-weight: bold;
       color: rgb(255, 147, 85);
 
+    }
+
+    .date-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(12px, 1.2vw, 18px);
     }
 
     .clock-row {
@@ -48,7 +55,7 @@
       align-items: center;
       gap: 8px;
       color: #ffcc66;
-      font-size: clamp(12px, 1.2vw, 18px);
+      font-size: clamp(14px, 2vw, 24px);
       font-weight: bold;
       white-space: nowrap;
     }
@@ -71,7 +78,7 @@
 
     @media screen and (max-width: 1024px) {
       .date-time {
-        font-size: 30px;
+        font-size: 24px;
       }
     }
                
@@ -83,12 +90,13 @@
       <div class="clock-row">
         <div class="time"></div>
       </div>
-      
-      <div id="status" class="status checking" role="status" aria-live="polite">
-        <span class="dot" aria-hidden="true"></span>
-        <span id="label">CHECKING</span>
+      <div class="date-row">
+        <div id="status" class="status checking" role="status" aria-live="polite">
+          <span class="dot" aria-hidden="true"></span>
+          <span id="label">CHECKING</span>
+        </div>
+        <div class="date-time"></div>
       </div>
-      <div class="date-time"></div>     
     </div>
 
 
