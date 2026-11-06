@@ -135,9 +135,12 @@
         <div class="date-time"></div>
       </div>
       <div class="info-row">
-        <div id="info" class="info-box" >
+        <div id="info" class="info-box">
+          <span class="info-label">last status check:</span>
           <span id="checked">-</span>
-          <span class="info-label"> was the previous check.</span>
+
+          <span class="info-label">&nbsp;|&nbsp;last status change:</span>
+          <span id="changed">-</span>
         </div>
       </div>
     </div>
@@ -152,6 +155,9 @@
   var internetStatus = document.getElementById('status');
   var label = document.getElementById('label');
   var checked = document.getElementById('checked');
+  var changed = document.getElementById('changed');
+  var lastStatus = null;
+  var lastChange = null;
 
   const ENDPOINTS = [
     { name: "Google", url: "https://www.gstatic.com/generate_204"},
@@ -193,12 +199,24 @@
     });
   }
 
+  function formatTime(value) {
+    return value.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+  }
+
   function render(up){
+    var now = new Date();
+
+    if (lastStatus !== up) {
+      lastStatus = up;
+      lastChange = now;
+    }
+
     internetStatus.classList.toggle('up', up);
     internetStatus.classList.toggle('down', !up);
     internetStatus.classList.remove('checking');
     label.textContent = up ? 'ONLINE' : 'OFFLINE';
-    checked.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    checked.textContent = formatTime(now);
+    changed.textContent = lastChange ? formatTime(lastChange) : '-';
   }
 
   function checkInternet(){
