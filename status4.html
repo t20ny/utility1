@@ -123,6 +123,40 @@
       white-space: nowrap;
     }
 
+    .provider-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+      max-width: 420px;
+      gap: clamp(12px, 2vw, 24px);
+      padding-left: clamp(12px, 3vw, 32px);
+      margin-top: 8px;
+    }
+
+    .provider-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #888;
+      font-size: clamp(10px, 1vw, 16px);
+      white-space: nowrap;
+    }
+
+    .provider-status.success {
+      color: #4caf50;
+    }
+
+    .provider-status.failure {
+      color: #f44336;
+    }
+
+    .provider-status .dot {
+      width: 10px;
+      height: 10px;
+      flex-basis: 10px;
+    }
+
         </style>
     
   </head>
@@ -145,6 +179,20 @@
 
           <span class="info-label">&nbsp;|&nbsp;last status change:</span>
           <span id="changed">-</span>
+        </div>
+      </div>
+      <div class="provider-row" role="group" aria-label="Individual service status">
+        <div class="provider-status" data-provider="Google" aria-label="Google: not checked" title="Google: not checked">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Google</span>
+        </div>
+        <div class="provider-status" data-provider="Cloudflare" aria-label="Cloudflare: not checked" title="Cloudflare: not checked">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Cloudflare</span>
+        </div>
+        <div class="provider-status" data-provider="Microsoft" aria-label="Microsoft: not checked" title="Microsoft: not checked">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Microsoft</span>
         </div>
       </div>
     </div>
@@ -226,9 +274,21 @@
   }
 
   function checkInternet(){
-    firstSuccess(ENDPOINTS.map(probe))
+    var probes = ENDPOINTS.map(probe);
+    probes.forEach(p => p.then(updateProviderStatus));
+    firstSuccess(probes)
       .then(() => render(true))
       .catch(() => render(false));
+  }
+
+  function updateProviderStatus(result){
+    var provider = document.querySelector('[data-provider="' + result.name + '"]');
+    var state = result.ok ? 'success' : 'failure';
+    var description = result.ok ? 'online' : 'offline';
+    provider.classList.remove('success', 'failure');
+    provider.classList.add(state);
+    provider.setAttribute('aria-label', result.name + ': ' + description);
+    provider.title = result.name + ': ' + description;
   }
 
   checkInternet();
